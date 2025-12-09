@@ -4,354 +4,477 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ashish Mishra | Backend & Full Stack Developer</title>
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         /* --- 1. GLOBAL RESET & TYPOGRAPHY --- */
-:root {
-    --primary-color: #0077b6; /* Professional Blue */
-    --secondary-color: #00b4d8; /* Lighter Blue */
-    --text-color: #e9ecef; /* Light text for dark background */
-    --bg-dark: #1f2833; /* Deep dark background */
-    --bg-light: #2c3a47; /* Slightly lighter background for contrast */
-    --font-family: 'Arial', sans-serif;
-}
+        :root {
+            --primary-color: #00b4d8; /* Bright Cyan/Blue for focus */
+            --secondary-color: #ade8f4; /* Light Accent */
+            --text-color: #e9ecef; /* Light text for dark background */
+            --bg-dark: #1f2833; /* Deep dark background */
+            --bg-light: #2c3a47; /* Slightly lighter background for contrast */
+            --font-family: 'Poppins', sans-serif;
+        }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-body {
-    font-family: var(--font-family);
-    line-height: 1.6;
-    color: var(--text-color);
-    background: var(--bg-dark);
-    scroll-behavior: smooth; /* Smooth scrolling for navigation */
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-.container {
-    max-width: 1100px;
-    margin: auto;
-    overflow: hidden;
-    padding: 0 20px;
-}
+        body {
+            font-family: var(--font-family);
+            line-height: 1.6;
+            color: var(--text-color);
+            background: var(--bg-dark);
+            scroll-behavior: smooth;
+        }
 
-h1, h2, h3 {
-    margin-bottom: 15px;
-    font-weight: 700;
-    color: #ade8f4; /* Accent color for headings */
-}
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            overflow: hidden;
+            padding: 0 20px;
+        }
 
-h2 {
-    font-size: 2.2rem;
-    padding-bottom: 5px;
-    border-bottom: 2px solid var(--secondary-color);
-    display: inline-block;
-}
+        h1, h2, h3 {
+            margin-bottom: 15px;
+            font-weight: 700;
+            color: var(--secondary-color);
+        }
 
-.subtitle {
-    font-style: italic;
-    color: var(--secondary-color);
-    margin-bottom: 30px;
-}
+        h2 {
+            font-size: 2.5rem;
+            padding-bottom: 5px;
+            border-bottom: 3px solid var(--primary-color);
+            display: inline-block;
+            margin-bottom: 40px;
+            text-shadow: 0 0 5px rgba(0, 180, 216, 0.4); /* Subtle glow */
+            animation: fadeIn 1s ease-out;
+        }
 
-/* --- 2. HEADER/HERO STYLING --- */
-header {
-    background: var(--bg-dark);
-    text-align: center;
-    padding: 100px 0;
-    border-bottom: 5px solid var(--primary-color);
-}
+        .subtitle {
+            font-style: italic;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+        }
 
-header h1 {
-    font-size: 3.5rem;
-    margin-bottom: 5px;
-    color: var(--text-color);
-}
+        /* --- 2. HEADER/HERO STYLING (Gradient) --- */
+        header {
+            background: linear-gradient(135deg, var(--bg-dark) 0%, #001219 100%); /* Dark gradient */
+            text-align: center;
+            padding: 120px 0;
+            border-bottom: 5px solid var(--primary-color);
+        }
 
-header h2 {
-    font-size: 1.5rem;
-    color: var(--secondary-color);
-    margin-bottom: 30px;
-    border-bottom: none;
-}
+        header h1 {
+            font-size: 4rem;
+            margin-bottom: 5px;
+            color: #ffffff;
+        }
 
-.contact-links a {
-    margin: 0 10px;
-}
+        header h2 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 40px;
+            border-bottom: none;
+            animation: none;
+            text-shadow: none;
+        }
 
-/* --- 3. BUTTON STYLING --- */
-.btn {
-    display: inline-block;
-    padding: 10px 20px;
-    margin: 5px 0;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: background-color 0.3s, color 0.3s;
-}
+        .contact-links a {
+            margin: 0 10px;
+            animation: fadeIn 1.5s ease-out;
+        }
 
-.btn i {
-    margin-right: 8px;
-}
+        /* --- 3. BUTTON STYLING --- */
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            margin: 5px 0;
+            text-decoration: none;
+            border-radius: 50px; /* Pill shape */
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
 
-.btn.primary {
-    background-color: var(--primary-color);
-    color: #fff;
-    border: 2px solid var(--primary-color);
-}
+        .btn.primary {
+            background-color: var(--primary-color);
+            color: var(--bg-dark);
+            border: 2px solid var(--primary-color);
+        }
 
-.btn.primary:hover {
-    background-color: #005f93;
-    border-color: #005f93;
-}
+        .btn.primary:hover {
+            background-color: #0096c7;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 180, 216, 0.5);
+        }
 
-.btn.secondary {
-    background-color: transparent;
-    color: var(--secondary-color);
-    border: 2px solid var(--secondary-color);
-}
+        .btn.secondary {
+            background-color: transparent;
+            color: var(--secondary-color);
+            border: 2px solid var(--secondary-color);
+        }
 
-.btn.secondary:hover {
-    background-color: var(--secondary-color);
-    color: var(--bg-dark);
-}
+        .btn.secondary:hover {
+            background-color: var(--secondary-color);
+            color: var(--bg-dark);
+            transform: scale(1.05);
+        }
 
-.btn.small {
-    padding: 5px 10px;
-    font-size: 0.9rem;
-}
+        .btn.small {
+            padding: 8px 15px;
+            font-size: 0.85rem;
+            border-radius: 20px;
+        }
 
-/* --- 4. SECTION STYLING --- */
-.section-padding {
-    padding: 60px 0;
-}
+        /* --- 4. SECTION STYLING --- */
+        .section-padding {
+            padding: 80px 0;
+            text-align: center;
+        }
 
-.bg-light {
-    background: var(--bg-light);
-}
+        .bg-light {
+            background: var(--bg-light);
+        }
 
-/* --- 5. SKILLS GRID --- */
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-    text-align: center;
-}
+        /* --- 5. SKILLS GRID --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            text-align: center;
+            margin-top: 40px;
+        }
 
-.skill-category {
-    background: var(--bg-dark);
-    padding: 20px;
-    border-radius: 8px;
-    border-bottom: 4px solid var(--secondary-color);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-}
+        .skill-category {
+            background: var(--bg-dark);
+            padding: 30px 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(44, 58, 71, 0.5);
+            transition: all 0.3s;
+        }
 
-.skill-category h3 {
-    color: var(--primary-color);
-}
+        .skill-category:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 180, 216, 0.1);
+        }
 
-/* --- 6. PROJECT GRID (KEY FOCUS) --- */
-.project-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-}
+        .skill-category h3 {
+            color: var(--primary-color);
+        }
 
-.project-card {
-    background: var(--bg-dark);
-    padding: 25px;
-    border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s;
-}
+        /* --- 6. PROJECT GRID (KEY FOCUS) --- */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            text-align: left;
+            margin-top: 40px;
+        }
 
-.project-card:hover {
-    transform: translateY(-5px);
-    border: 1px solid var(--secondary-color);
-}
+        .project-card {
+            background: var(--bg-dark);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            transition: transform 0.4s;
+            border-top: 5px solid var(--secondary-color);
+            position: relative; /* For the tooltip */
+        }
 
-.project-card h3 {
-    color: #ade8f4;
-    margin-bottom: 10px;
-}
+        .project-card:hover {
+            transform: scale(1.02);
+            border-top-color: var(--primary-color);
+        }
 
-.project-card .tech-stack {
-    color: var(--secondary-color);
-    font-size: 0.95rem;
-    margin-bottom: 15px;
-}
+        .project-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
 
-/* --- 7. EXPERIENCE LIST --- */
-.job-entry {
-    background: var(--bg-light);
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 25px;
-    border-left: 5px solid var(--primary-color);
-}
+        .project-card .tech-stack {
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
 
-.job-entry h3 {
-    margin-top: 0;
-    color: var(--secondary-color);
-}
+        /* Tooltip Styles */
+        .tooltip-text {
+            visibility: hidden;
+            width: 200px;
+            background-color: var(--primary-color);
+            color: var(--bg-dark);
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            position: absolute;
+            z-index: 10;
+            bottom: 100%; /* Position above the element */
+            left: 50%;
+            margin-left: -100px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 0.8rem;
+        }
 
-.job-entry .duration {
-    font-style: italic;
-    color: #bbb;
-    margin-bottom: 10px;
-}
+        .project-card:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
 
-.job-entry ul {
-    list-style: none;
-    padding-left: 0;
-}
 
-.job-entry ul li {
-    margin-bottom: 8px;
-}
+        /* --- 7. EXPERIENCE LIST --- */
+        .job-entry {
+            background: var(--bg-light);
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            border-left: 5px solid var(--primary-color);
+            text-align: left;
+        }
 
-.job-entry ul li::before {
-    content: "•";
-    color: var(--primary-color);
-    font-weight: bold;
-    display: inline-block;
-    width: 1em;
-    margin-left: -1em;
-}
+        .job-entry h3 {
+            margin-top: 0;
+            color: var(--secondary-color);
+        }
 
-/* --- 8. FOOTER --- */
-#contact {
-    background: #111;
-    color: #fff;
-    text-align: center;
-    padding: 50px 0;
-    border-top: 5px solid var(--secondary-color);
-}
+        .job-entry .duration {
+            font-style: italic;
+            color: #bbb;
+            margin-bottom: 10px;
+        }
 
-.contact-footer a {
-    margin: 10px;
-}
+        .job-entry ul {
+            list-style: none;
+            padding-left: 0;
+        }
 
-.copyright {
-    margin-top: 20px;
-    font-size: 0.9rem;
-    color: #888;
-}
+        .job-entry ul li {
+            margin-bottom: 8px;
+        }
 
-/* --- 9. RESPONSIVENESS (Mobile-Friendly) --- */
-@media (max-width: 768px) {
-    header {
-        padding: 50px 0;
-    }
-    header h1 {
-        font-size: 2.5rem;
-    }
-    header h2 {
-        font-size: 1.2rem;
-    }
-    .contact-links a {
-        display: block;
-        margin: 10px auto;
-    }
-    .skills-grid, .project-grid {
-        grid-template-columns: 1fr;
-    }
-}
-    </style>    
+        .job-entry ul li::before {
+            content: "✦";
+            color: var(--primary-color);
+            font-weight: bold;
+            display: inline-block;
+            width: 1.5em;
+            margin-left: -1em;
+        }
+        
+        /* New Section Style */
+        .soft-skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .skill-box {
+            background: var(--bg-light);
+            padding: 20px;
+            border-radius: 10px;
+            border-bottom: 3px solid var(--primary-color);
+            text-align: center;
+        }
+
+        .skill-box i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        /* --- 8. FOOTER --- */
+        #contact {
+            background: linear-gradient(0deg, #111 0%, #2c3a47 100%);
+            color: #fff;
+            text-align: center;
+            padding: 50px 0;
+            border-top: 5px solid var(--primary-color);
+        }
+
+        .contact-footer a {
+            margin: 10px;
+        }
+
+        .copyright {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        /* --- 9. RESPONSIVENESS (Mobile-Friendly) --- */
+        @media (max-width: 768px) {
+            header {
+                padding: 80px 0;
+            }
+            header h1 {
+                font-size: 3rem;
+            }
+            header h2 {
+                font-size: 1.4rem;
+            }
+            h2 {
+                font-size: 1.8rem;
+            }
+            .contact-links a {
+                display: block;
+                margin: 10px auto;
+            }
+            .skills-grid, .project-grid, .soft-skills-grid {
+                grid-template-columns: 1fr;
+            }
+            .job-entry {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
 <body>
 
     <header id="home">
         <div class="container">
             <h1>ASHISH MISHRA</h1>
-            <h2>Backend & Full Stack Developer | 6+ Years Experience</h2>
-            <p>Building **Scalable, High-Performance Applications** across diverse business domains.</p>
+            <h2>Senior Backend Developer | Scaling Solutions Across 8+ Industries</h2>
+            <p>6+ years of expertise in **Node.js, System Design, and DevOps** to deliver high-performance, resilient applications.</p>
             <div class="contact-links">
                 <a href="mailto:1ashishji1@gmail.com" class="btn primary"><i class="fas fa-envelope"></i> Contact Me</a>
                 <a href="8528451010" class="btn secondary"><i class="fas fa-phone"></i> Call</a>
                 <a href="https://github.com/1ashishji/" target="_blank" class="btn secondary"><i class="fab fa-github"></i> GitHub</a>
-                  <a href="https://www.linkedin.com/in/ashish-mishra-5283091ab" target="_blank" class="btn secondary"><i class="fab fa-linkedin"></i> Linkedin</a>
+                <a href="https://www.linkedin.com/in/ashish-mishra-5283091ab" target="_blank" class="btn secondary"><i class="fab fa-linkedin"></i> LinkedIn</a>
             </div>
         </div>
     </header>
 
     <section id="skills" class="section-padding">
         <div class="container">
-            <h2><i class="fas fa-code"></i> Technical Stack & Expertise</h2>
+            <h2><i class="fas fa-code-branch"></i> Technical Stack & Core Expertise</h2>
             <div class="skills-grid">
                 <div class="skill-category">
-                    <h3>Backend & Core</h3>
-                    <p>Node.js (Primary), PHP, Ruby on Rails, REST APIs, **System Design**, Payment Gateways</p>
+                    <h3>Backend & Frameworks</h3>
+                    <p>**Node.js (Expert)**, PHP, Ruby on Rails, REST APIs, **System Architecture**</p>
                 </div>
                 <div class="skill-category">
-                    <h3>Databases</h3>
-                    <p>MySQL, PostgreSQL, SQL Performance Optimization, Database Migrations</p>
+                    <h3>Databases & Data</h3>
+                    <p>**PostgreSQL**, MySQL, Advanced SQL Optimization, Database Migrations, Scalability</p>
                 </div>
                 <div class="skill-category">
-                    <h3>Frontend</h3>
-                    <p>HTML, CSS, JavaScript, **jQuery**, React (Basics)</p>
+                    <h3>Frontend & Interactivity</h3>
+                    <p>HTML5, CSS3, JavaScript (ES6+), **jQuery (DOM Manipulation)**, React (Basics)</p>
                 </div>
                 <div class="skill-category">
                     <h3>DevOps & Cloud</h3>
-                    <p>Git, GitHub, GitLab, **CI/CD**, Docker, Nginx, AWS (EC2, S3), Postman</p>
+                    <p>AWS (EC2, S3), **Docker**, **CI/CD**, Nginx, Git, GitHub/GitLab, Postman</p>
                 </div>
             </div>
         </div>
     </section>
-
+    
     <section id="work" class="section-padding bg-light">
         <div class="container">
-            <h2><i class="fas fa-project-diagram"></i> Multi-Domain Project Experience</h2>
-            <p class="subtitle">Showcasing impactful development across diverse industries.</p>
+            <h2><i class="fas fa-globe"></i> Multi-Domain Project Portfolio</h2>
+            <p class="subtitle">Architecting resilient solutions across key global industries.</p>
             
             <div class="project-grid">
 
                 <div class="project-card domain-logistics">
-                    <h3><i class="fas fa-truck"></i> Logistics & Supply Chain (ERP)</h3>
-                    <p class="tech-stack">**Node.js**, PostgreSQL, Docker, AWS, System Design</p>
-                    <p>Led backend development for a transport and logistics management platform, focusing on **route optimization**, real-time tracking modules, and secure data handling. **Quantifiable Impact:** *[e.g., Reduced database query time by 30% on key reports.]*</p>
-                    <a href="[Link to private repo details or live demo]" class="btn small">View Details</a>
+                    <span class="tooltip-text">Backend: Node.js, PostgreSQL, AWS, Docker</span>
+                    <h3><i class="fas fa-shipping-fast"></i> Logistics & Supply Chain (3pExpert)</h3>
+                    <p class="tech-stack">Node.js, PostgreSQL, Docker, AWS, System Design</p>
+                    <p>Led development for **3pexpert logistics**, specializing in **real-time route optimization** and secure API integration for carrier management. Achieved **25% faster** manifest generation.</p>
+                    <a href="[Link to private repo details or live demo]" class="btn small">Case Study</a>
                 </div>
 
                 <div class="project-card domain-ecommerce">
-                    <h3><i class="fas fa-shopping-cart"></i> E-Commerce Platform</h3>
-                    <p class="tech-stack">PHP, MySQL, **jQuery**, Payment Gateway Integration</p>
-                    <p>Implemented robust **shopping cart and checkout flows**, integrated multiple payment gateways (e.g., Stripe/Paytm), and developed inventory management APIs. **Project:** *[Link to a specific E-commerce project/feature you built.]*</p>
+                    <span class="tooltip-text">Backend: Node.js/Ruby on Rails | Frontend: jQuery</span>
+                    <h3><i class="fas fa-tv"></i> E-Commerce & Live Selling (Celebrancer.com)</h3>
+                    <p class="tech-stack">Ruby on Rails, Node.js, PHP, MySQL, Payment Gateways</p>
+                    <p>Engineered high-traffic features for **Celebrancer.com**, supporting **live-streamed product sales** and integrating multiple payment systems and inventory updates seamlessly.</p>
                     <a href="[Link to project]" class="btn small">View Project</a>
                 </div>
                 
                 <div class="project-card domain-finance">
-                    <h3><i class="fas fa-credit-card"></i> Banking & FinTech</h3>
-                    <p class="tech-stack">Node.js, PostgreSQL, Security Auditing</p>
-                    <p>Developed secure transaction processing modules and reporting systems, adhering to strict financial data compliance (e.g., KYC, ledger generation). **Focus:** Data integrity and security performance.</p>
+                    <span class="tooltip-text">Focus: Security, Transaction Integrity, Reporting</span>
+                    <h3><i class="fas fa-landmark"></i> Banking & FinTech Solutions</h3>
+                    <p class="tech-stack">Node.js, PostgreSQL, Security Auditing, High Availability</p>
+                    <p>Designed secure modules for financial data handling (KYC, ledgers) and transaction processing, ensuring **high availability and stringent compliance** for partner banks.</p>
                     <a href="[Link to relevant details]" class="btn small">Case Study</a>
                 </div>
 
-                <div class="project-card domain-platform">
-                    <h3><i class="fas fa-users"></i> CRM, LMS & Social (Celebrancer)</h3>
-                    <p class="tech-stack">Node.js, **Ruby on Rails**, React (Basics), Database Scalability</p>
-                    <p>Contributed to **Celebrancer.com** (or similar platform) features like user profile management, content scheduling, and engagement tracking. Worked on both CRM/LMS backends and user-facing social features.</p>
+                <div class="project-card domain-dooh">
+                    <span class="tooltip-text">Backend: PHP/Node.js | DevOps: Nginx, Load Balancing</span>
+                    <h3><i class="fas fa-bullhorn"></i> Digital Out-of-Home (DOOH) (itsspotlight.com)</h3>
+                    <p class="tech-stack">PHP, Node.js, MySQL, Real-time APIs</p>
+                    <p>Developed the core scheduling and content delivery APIs for **itsspotlight.com**, managing real-time data feeds and ensuring reliability across distributed display networks.</p>
                     <a href="[Link to relevant details]" class="btn small">Read More</a>
+                </div>
+
+                <div class="project-card domain-crm">
+                    <span class="tooltip-text">Tech: Ruby on Rails, PostgreSQL, Custom Reports</span>
+                    <h3><i class="fas fa-building"></i> Construction CRM / ERP</h3>
+                    <p class="tech-stack">Ruby on Rails, PostgreSQL, Custom Reporting, User Management</p>
+                    <p>Built tailored CRM features for the construction sector, focusing on project tracking, material inventory, and generating complex, custom regulatory reports.</p>
+                    <a href="[Link to relevant details]" class="btn small">View System</a>
+                </div>
+
+                <div class="project-card domain-erp">
+                    <span class="tooltip-text">Tech: Node.js, Inventory Management, Workflow Automation</span>
+                    <h3><i class="fas fa-cogs"></i> Manufacturing ERP & LMS</h3>
+                    <p class="tech-stack">Node.js, MySQL, Workflow Automation, LMS Modules</p>
+                    <p>Contributed to manufacturing ERP systems (BOM, production scheduling) and **Course Sell/LMS** platforms, integrating billing and access control modules.</p>
+                    <a href="[Link to relevant details]" class="btn small">View System</a>
                 </div>
 
             </div>
         </div>
     </section>
 
-    <section id="experience" class="section-padding">
+    <section id="leadership" class="section-padding">
         <div class="container">
-            <h2><i class="fas fa-briefcase"></i> Professional Experience</h2>
+            <h2><i class="fas fa-users-cog"></i> Leadership & Professional Attributes</h2>
+            <p class="subtitle">Combining technical mastery with robust communication and team leadership.</p>
+
+            <div class="soft-skills-grid">
+                <div class="skill-box">
+                    <i class="fas fa-sitemap"></i>
+                    <h3>Team Leadership & Mentoring</h3>
+                    <p>Successfully led code review sessions, delegated tasks based on strengths, and mentored junior developers to enhance team velocity and product quality.</p>
+                </div>
+                <div class="skill-box">
+                    <i class="fas fa-search-dollar"></i>
+                    <h3>Onsite Requirement Gathering</h3>
+                    <p>Proven expertise in performing **onsite work experience** for high-priority projects, ensuring accurate **information gathering** and alignment between technical teams and stakeholders.</p>
+                </div>
+                <div class="skill-box">
+                    <i class="fas fa-hands-helping"></i>
+                    <h3>Community & Volunteer Work</h3>
+                    <p>Dedicated volunteer experience at **itsspotlight** and **Cardicon PGI**, applying technical and organizational skills to community-focused initiatives.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="section-padding bg-light">
+        <div class="container">
+            <h2><i class="fas fa-briefcase"></i> Key Professional Experience</h2>
             
             <div class="job-entry">
                 <h3>Senior Backend Developer / Tech Lead — Zapbuild</h3>
                 <p class="duration">03/2021 – Present | Mohali, Punjab</p>
                 <ul>
-                    <li>**Leadership:** Mentored team, led **code reviews**, and ensured **best coding standards** and security practices.</li>
-                    <li>**Architecture:** Provided technical solutions and made architectural decisions to optimize **Node.js** system performance.</li>
-                    <li>**Impact:** Successfully launched **X** key features, improving platform efficiency by **Y%**.</li>
+                    <li>**Leadership:** Drove architecture decisions and mentored team members, ensuring high-quality, scalable implementation of Node.js services.</li>
+                    <li>**Performance:** Optimized system bottlenecks, resulting in a **Y%** improvement in API response times across core logistics modules.</li>
+                    <li>**DevOps:** Managed **CI/CD pipelines** and Docker deployments on AWS, reducing deployment failure rates.</li>
                 </ul>
             </div>
 
@@ -359,8 +482,8 @@ header h2 {
                 <h3>Backend Developer — Logimetrix</h3>
                 <p class="duration">07/2019 – 03/2021 | Lucknow</p>
                 <ul>
-                    <li>Developed and maintained core backend functionality using **Node.js** and optimized **SQL queries** for better performance.</li>
-                    <li>Participated in **Agile/Scrum** planning, bug fixing, and new feature implementation.</li>
+                    <li>Developed and maintained core backend services using **Node.js** and focused on optimizing **SQL queries** for MySQL/PostgreSQL.</li>
+                    <li>Actively contributed to **Agile/Scrum** methodology, consistently delivering features within sprint timelines.</li>
                 </ul>
             </div>
         </div>
@@ -368,13 +491,13 @@ header h2 {
 
     <footer id="contact">
         <div class="container">
-            <h2>Let's Build Something Great.</h2>
-            <p>I'm currently seeking challenging senior backend roles. Reach out to discuss your project or opportunities.</p>
+            <h2>Let's Connect and Collaborate.</h2>
+            <p>I'm available for challenging Senior Backend and Tech Lead roles focused on large-scale system architecture.</p>
             <div class="contact-footer">
                 <a href="mailto:1ashishji1@gmail.com" class="btn primary">Email Me Today</a>
-                <a href="[Link to your full PDF Resume/CV]" target="_blank" class="btn secondary">Download Resume</a>
+                <a href="[Link to your full PDF Resume/CV]" target="_blank" class="btn secondary">Download Full Resume</a> 
             </div>
-            <p class="copyright">&copy; <span id="year"></span> Ashish Mishra. Built with <i class="fas fa-heart"></i> and pure HTML/CSS/JS.</p>
+            <p class="copyright">&copy; <span id="year"></span> Ashish Mishra. Masterfully Built.</p>
         </div>
     </footer>
 
