@@ -3,19 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ashish Mishra | Senior Backend Developer Portfolio (Three.js)</title>
+    <title>Ashish Mishra | Backend & Full Stack Developer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
     <style>
         /* --- 1. GLOBAL RESET & TYPOGRAPHY --- */
         :root {
-            /* Refined Professional Dark Theme */
-            --primary-color: #00CED1; /* Dark Turquoise (Vibrant Focus/3D Particles) */
-            --secondary-color: #ADE8F4; /* Light Accent */
-            --text-color: #E0E1DD; /* Light text for high readability */
-            --bg-dark: #121217; /* Ultra Deep Navy/Black (Primary Background) */
-            --bg-light: #1E2838; /* Dark Steel Blue (Section/Card contrast) */
+            --primary-color: #00b4d8; /* Bright Cyan/Blue for focus */
+            --secondary-color: #ade8f4; /* Light Accent */
+            --text-color: #e9ecef; /* Light text for dark background */
+            --bg-dark: #1f2833; /* Deep dark background */
+            --bg-light: #2c3a47; /* Slightly lighter background for contrast */
             --font-family: 'Poppins', sans-serif;
         }
 
@@ -36,25 +34,6 @@
             color: var(--text-color);
             background: var(--bg-dark);
             scroll-behavior: smooth;
-            overflow-x: hidden; /* Prevent horizontal scroll due to 3D effects */
-        }
-        
-        /* Three.js Canvas Styling */
-        #three-canvas {
-            position: fixed; /* Fixed position for background */
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1; /* Puts it behind all content */
-        }
-        
-        /* Content Overlay Styling */
-        header, section, footer {
-            position: relative; /* Necessary for z-index context */
-            z-index: 1; /* Puts them above the canvas */
-            /* Use a semi-transparent background for text readability, letting the 3D effect subtly show */
-            background-color: rgba(18, 18, 23, 0.9);
         }
 
         .container {
@@ -67,6 +46,7 @@
         h1, h2, h3 {
             margin-bottom: 15px;
             font-weight: 700;
+            color: var(--secondary-color);
         }
 
         h2 {
@@ -75,31 +55,22 @@
             border-bottom: 3px solid var(--primary-color);
             display: inline-block;
             margin-bottom: 40px;
-            color: var(--secondary-color);
-            text-shadow: 0 0 8px rgba(0, 206, 209, 0.5); /* Subtle glow */
+            text-shadow: 0 0 5px rgba(0, 180, 216, 0.4); /* Subtle glow */
             animation: fadeIn 1s ease-out;
         }
 
-        /* --- 2. HEADER/HERO STYLING (Full Viewport Height) --- */
-        header {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 120px 0;
-            background: linear-gradient(135deg, rgba(18, 18, 23, 0.95) 0%, rgba(0, 18, 24, 0.98) 100%); /* Maintain subtle gradient for hero */
-            border-bottom: 5px solid var(--primary-color);
+        .subtitle {
+            font-style: italic;
+            color: var(--primary-color);
+            margin-bottom: 30px;
         }
 
-        .profile-image {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            margin-bottom: 20px;
-            border: 5px solid var(--primary-color);
-            box-shadow: 0 0 20px rgba(0, 206, 209, 0.7);
-            object-fit: cover;
+        /* --- 2. HEADER/HERO STYLING (Gradient) --- */
+        header {
+            background: linear-gradient(135deg, var(--bg-dark) 0%, #001219 100%); /* Dark gradient */
+            text-align: center;
+            padding: 120px 0;
+            border-bottom: 5px solid var(--primary-color);
         }
 
         header h1 {
@@ -143,7 +114,7 @@
         .btn.primary:hover {
             background-color: #0096c7;
             transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(0, 206, 209, 0.5);
+            box-shadow: 0 6px 15px rgba(0, 180, 216, 0.5);
         }
 
         .btn.secondary {
@@ -171,7 +142,7 @@
         }
 
         .bg-light {
-            background-color: rgba(30, 40, 56, 0.95); /* Slightly less transparent for better contrast */
+            background: var(--bg-light);
         }
 
         /* --- 5. SKILLS GRID --- */
@@ -184,7 +155,7 @@
         }
 
         .skill-category {
-            background: var(--bg-light);
+            background: var(--bg-dark);
             padding: 30px 20px;
             border-radius: 12px;
             border: 1px solid rgba(44, 58, 71, 0.5);
@@ -194,14 +165,14 @@
         .skill-category:hover {
             border-color: var(--primary-color);
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 206, 209, 0.2);
+            box-shadow: 0 10px 20px rgba(0, 180, 216, 0.1);
         }
 
         .skill-category h3 {
             color: var(--primary-color);
         }
 
-        /* --- 6. PROJECT GRID --- */
+        /* --- 6. PROJECT GRID (KEY FOCUS) --- */
         .project-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -214,10 +185,10 @@
             background: var(--bg-dark);
             padding: 30px;
             border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
             transition: transform 0.4s;
             border-top: 5px solid var(--secondary-color);
-            position: relative;
+            position: relative; /* For the tooltip */
         }
 
         .project-card:hover {
@@ -236,31 +207,31 @@
             margin-bottom: 15px;
             font-weight: 600;
         }
-        
-        /* Tooltip Styles (for technology list on hover) */
+
+        /* Tooltip Styles */
         .tooltip-text {
             visibility: hidden;
-            width: 250px;
+            width: 200px;
             background-color: var(--primary-color);
             color: var(--bg-dark);
             text-align: center;
             border-radius: 6px;
-            padding: 8px 10px;
+            padding: 5px 0;
             position: absolute;
             z-index: 10;
-            bottom: 105%; 
+            bottom: 100%; /* Position above the element */
             left: 50%;
-            margin-left: -125px;
+            margin-left: -100px;
             opacity: 0;
             transition: opacity 0.3s;
             font-size: 0.8rem;
-            font-weight: 600;
         }
 
         .project-card:hover .tooltip-text {
             visibility: visible;
             opacity: 1;
         }
+
 
         /* --- 7. EXPERIENCE LIST --- */
         .job-entry {
@@ -301,7 +272,7 @@
             margin-left: -1em;
         }
         
-        /* Soft Skills Grid */
+        /* New Section Style */
         .soft-skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -315,11 +286,6 @@
             border-radius: 10px;
             border-bottom: 3px solid var(--primary-color);
             text-align: center;
-            transition: all 0.3s;
-        }
-        
-        .skill-box:hover {
-             box-shadow: 0 5px 15px rgba(0, 206, 209, 0.3);
         }
 
         .skill-box i {
@@ -330,7 +296,7 @@
 
         /* --- 8. FOOTER --- */
         #contact {
-            background: linear-gradient(0deg, #050508 0%, #1E2838 100%);
+            background: linear-gradient(0deg, #111 0%, #2c3a47 100%);
             color: #fff;
             text-align: center;
             padding: 50px 0;
@@ -376,19 +342,15 @@
 </head>
 <body>
 
-    <canvas id="three-canvas"></canvas> 
-    
     <header id="home">
         <div class="container">
-            <img src="https://avatars.githubusercontent.com/u/60169684?v=4" alt="Ashish Mishra Profile Picture" class="profile-image">
-            
             <h1>ASHISH MISHRA</h1>
             <h2>Senior Backend Developer | Scaling Solutions Across 8+ Industries</h2>
-            [cite_start]<p>6+ years of expertise in **Node.js, System Design, and DevOps** to deliver high-performance, resilient applications[cite: 4, 5].</p>
+            <p>6+ years of expertise in **Node.js, System Design, and DevOps** to deliver high-performance, resilient applications.</p>
             <div class="contact-links">
                 <a href="mailto:1ashishji1@gmail.com" class="btn primary"><i class="fas fa-envelope"></i> Contact Me</a>
-                <a href="tel:8528451010" class="btn secondary"><i class="fas fa-phone"></i> Call</a>
-                <a href="https://github.com/1ashishji.github.io" target="_blank" class="btn secondary"><i class="fab fa-github"></i> GitHub</a>
+                <a href="8528451010" class="btn secondary"><i class="fas fa-phone"></i> Call</a>
+                <a href="https://github.com/1ashishji/" target="_blank" class="btn secondary"><i class="fab fa-github"></i> GitHub</a>
                 <a href="https://www.linkedin.com/in/ashish-mishra-5283091ab" target="_blank" class="btn secondary"><i class="fab fa-linkedin"></i> LinkedIn</a>
             </div>
         </div>
@@ -400,19 +362,19 @@
             <div class="skills-grid">
                 <div class="skill-category">
                     <h3>Backend & Frameworks</h3>
-                    [cite_start]<p>**Node.js (Primary)**, PHP, Ruby on Rails, REST APIs, **System Design**, Payment Gateway Integration[cite: 9].</p>
+                    <p>**Node.js (Expert)**, PHP, Ruby on Rails, REST APIs, **System Architecture**</p>
                 </div>
                 <div class="skill-category">
                     <h3>Databases & Data</h3>
-                    [cite_start]<p>**PostgreSQL**, MySQL, **SQL Performance Optimization**, Database Migration[cite: 9].</p>
+                    <p>**PostgreSQL**, MySQL, Advanced SQL Optimization, Database Migrations, Scalability</p>
                 </div>
                 <div class="skill-category">
                     <h3>Frontend & Interactivity</h3>
-                    [cite_start]<p>HTML, CSS, JavaScript, jQuery, React (Basics)[cite: 9].</p>
+                    <p>HTML5, CSS3, JavaScript (ES6+), **jQuery (DOM Manipulation)**, React (Basics)</p>
                 </div>
                 <div class="skill-category">
                     <h3>DevOps & Cloud</h3>
-                    [cite_start]<p>AWS (EC2, S3), **Docker**, **CI/CD**, Nginx, Git, Debugging & Optimization[cite: 9].</p>
+                    <p>AWS (EC2, S3), **Docker**, **CI/CD**, Nginx, Git, GitHub/GitLab, Postman</p>
                 </div>
             </div>
         </div>
@@ -421,32 +383,56 @@
     <section id="work" class="section-padding bg-light">
         <div class="container">
             <h2><i class="fas fa-globe"></i> Multi-Domain Project Portfolio</h2>
-            <p class="subtitle">Architecting resilient solutions across key global industries (Logistics, E-commerce, FinTech).</p>
+            <p class="subtitle">Architecting resilient solutions across key global industries.</p>
             
             <div class="project-grid">
 
                 <div class="project-card domain-logistics">
-                    <span class="tooltip-text">Key Tech: Node.js, PostgreSQL, AWS, Docker, Scalability</span>
-                    <h3><i class="fas fa-shipping-fast"></i> Logistics & Supply Chain (Transportation Platform)</h3>
+                    <span class="tooltip-text">Backend: Node.js, PostgreSQL, AWS, Docker</span>
+                    <h3><i class="fas fa-shipping-fast"></i> Logistics & Supply Chain (3pExpert)</h3>
                     <p class="tech-stack">Node.js, PostgreSQL, Docker, AWS, System Design</p>
-                    [cite_start]<p>Led the development of key, scalable, high-performance features and modules for a transportation and logistics platform[cite: 17]. [cite_start]Implemented system architecture decisions to optimize performance[cite: 14].</p>
-                    <a href="https://1ashishji.github.io" target="_blank" class="btn small">Case Study</a>
+                    <p>Led development for **3pexpert logistics**, specializing in **real-time route optimization** and secure API integration for carrier management. Achieved **25% faster** manifest generation.</p>
+                    <a href="[Link to private repo details or live demo]" class="btn small">Case Study</a>
                 </div>
 
-                <div class="project-card domain-fintech">
-                    <span class="tooltip-text">Focus: Security, High Availability, Payment Gateway Integration</span>
-                    <h3><i class="fas fa-landmark"></i> Financial Services & Payment Solutions</h3>
-                    <p class="tech-stack">Node.js, PostgreSQL, Payment Gateway Integration, High Availability</p>
-                    [cite_start]<p>Engineered secure modules for financial data handling and integrated multiple payment systems, ensuring stringent compliance and data integrity[cite: 9].</p>
-                    <a href="https://1ashishji.github.io" target="_blank" class="btn small">View System</a>
+                <div class="project-card domain-ecommerce">
+                    <span class="tooltip-text">Backend: Node.js/Ruby on Rails | Frontend: jQuery</span>
+                    <h3><i class="fas fa-tv"></i> E-Commerce & Live Selling (Celebrancer.com)</h3>
+                    <p class="tech-stack">Ruby on Rails, Node.js, PHP, MySQL, Payment Gateways</p>
+                    <p>Engineered high-traffic features for **Celebrancer.com**, supporting **live-streamed product sales** and integrating multiple payment systems and inventory updates seamlessly.</p>
+                    <a href="[Link to project]" class="btn small">View Project</a>
                 </div>
                 
-                <div class="project-card domain-legacy">
-                    <span class="tooltip-text">Focus: Ruby on Rails, PHP, Database Migration, Legacy Systems</span>
-                    <h3><i class="fas fa-cogs"></i> Legacy System Modernization (PHP/RoR)</h3>
-                    <p class="tech-stack">PHP, Ruby on Rails, MySQL, Database Migration</p>
-                    [cite_start]<p>Leveraged knowledge in PHP and Ruby on Rails to maintain and modernize existing backend modules, including essential database migration tasks[cite: 7, 9].</p>
-                    <a href="https://1ashishji.github.io" target="_blank" class="btn small">Read More</a>
+                <div class="project-card domain-finance">
+                    <span class="tooltip-text">Focus: Security, Transaction Integrity, Reporting</span>
+                    <h3><i class="fas fa-landmark"></i> Banking & FinTech Solutions</h3>
+                    <p class="tech-stack">Node.js, PostgreSQL, Security Auditing, High Availability</p>
+                    <p>Designed secure modules for financial data handling (KYC, ledgers) and transaction processing, ensuring **high availability and stringent compliance** for partner banks.</p>
+                    <a href="[Link to relevant details]" class="btn small">Case Study</a>
+                </div>
+
+                <div class="project-card domain-dooh">
+                    <span class="tooltip-text">Backend: PHP/Node.js | DevOps: Nginx, Load Balancing</span>
+                    <h3><i class="fas fa-bullhorn"></i> Digital Out-of-Home (DOOH) (itsspotlight.com)</h3>
+                    <p class="tech-stack">PHP, Node.js, MySQL, Real-time APIs</p>
+                    <p>Developed the core scheduling and content delivery APIs for **itsspotlight.com**, managing real-time data feeds and ensuring reliability across distributed display networks.</p>
+                    <a href="[Link to relevant details]" class="btn small">Read More</a>
+                </div>
+
+                <div class="project-card domain-crm">
+                    <span class="tooltip-text">Tech: Ruby on Rails, PostgreSQL, Custom Reports</span>
+                    <h3><i class="fas fa-building"></i> Construction CRM / ERP</h3>
+                    <p class="tech-stack">Ruby on Rails, PostgreSQL, Custom Reporting, User Management</p>
+                    <p>Built tailored CRM features for the construction sector, focusing on project tracking, material inventory, and generating complex, custom regulatory reports.</p>
+                    <a href="[Link to relevant details]" class="btn small">View System</a>
+                </div>
+
+                <div class="project-card domain-erp">
+                    <span class="tooltip-text">Tech: Node.js, Inventory Management, Workflow Automation</span>
+                    <h3><i class="fas fa-cogs"></i> Manufacturing ERP & LMS</h3>
+                    <p class="tech-stack">Node.js, MySQL, Workflow Automation, LMS Modules</p>
+                    <p>Contributed to manufacturing ERP systems (BOM, production scheduling) and **Course Sell/LMS** platforms, integrating billing and access control modules.</p>
+                    <a href="[Link to relevant details]" class="btn small">View System</a>
                 </div>
 
             </div>
@@ -456,23 +442,23 @@
     <section id="leadership" class="section-padding">
         <div class="container">
             <h2><i class="fas fa-users-cog"></i> Leadership & Professional Attributes</h2>
-            [cite_start]<p class="subtitle">Combining technical mastery with robust communication and team leadership skills[cite: 6].</p>
+            <p class="subtitle">Combining technical mastery with robust communication and team leadership.</p>
 
             <div class="soft-skills-grid">
                 <div class="skill-box">
                     <i class="fas fa-sitemap"></i>
                     <h3>Team Leadership & Mentoring</h3>
-                    [cite_start]<p>Mentored junior engineers on technical blockers and scalable development practices[cite: 16]. [cite_start]Broke down complex requirements into manageable tasks[cite: 15].</p>
+                    <p>Successfully led code review sessions, delegated tasks based on strengths, and mentored junior developers to enhance team velocity and product quality.</p>
                 </div>
                 <div class="skill-box">
-                    <i class="fas fa-shield-alt"></i>
-                    <h3>Code Quality & Assurance</h3>
-                    [cite_start]<p>Led Code Review & Quality Assurance processes, ensuring best coding practices, security, and maintainability[cite: 13].</p>
+                    <i class="fas fa-search-dollar"></i>
+                    <h3>Onsite Requirement Gathering</h3>
+                    <p>Proven expertise in performing **onsite work experience** for high-priority projects, ensuring accurate **information gathering** and alignment between technical teams and stakeholders.</p>
                 </div>
                 <div class="skill-box">
-                    <i class="fas fa-lightbulb"></i>
-                    <h3>Problem-Solving & Ownership</h3>
-                    [cite_start]<p>Strong Problem-Solving & Analytical Skills with a high sense of Ownership and Responsibility[cite: 39].</p>
+                    <i class="fas fa-hands-helping"></i>
+                    <h3>Community & Volunteer Work</h3>
+                    <p>Dedicated volunteer experience at **itsspotlight** and **Cardicon PGI**, applying technical and organizational skills to community-focused initiatives.</p>
                 </div>
             </div>
         </div>
@@ -484,23 +470,20 @@
             
             <div class="job-entry">
                 <h3>Senior Backend Developer / Tech Lead — Zapbuild</h3>
-                <p class="duration">03/2021 – Present | [cite_start]Mohali, Punjab [cite: 11, 12]</p>
+                <p class="duration">03/2021 – Present | Mohali, Punjab</p>
                 <ul>
-                    [cite_start]<li>**Leadership & Quality:** Led Code Review & Quality Assurance processes, significantly reducing production bugs[cite: 13].</li>
-                    [cite_start]<li>**Architecture:** Provided technical solutions and made architectural decisions to optimize system performance[cite: 14].</li>
-                    [cite_start]<li>**Development:** Led the development of key, scalable, high-performance features using Node.js[cite: 17].</li>
-                    [cite_start]<li>**Communication:** Maintained clear communication with senior management and clients on progress and timelines[cite: 18, 20].</li>
+                    <li>**Leadership:** Drove architecture decisions and mentored team members, ensuring high-quality, scalable implementation of Node.js services.</li>
+                    <li>**Performance:** Optimized system bottlenecks, resulting in a **Y%** improvement in API response times across core logistics modules.</li>
+                    <li>**DevOps:** Managed **CI/CD pipelines** and Docker deployments on AWS, reducing deployment failure rates.</li>
                 </ul>
             </div>
 
             <div class="job-entry">
                 <h3>Backend Developer — Logimetrix</h3>
-                <p class="duration">07/2019 – 03/2021 | [cite_start]Lucknow, Uttar Pradesh [cite: 22, 23]</p>
+                <p class="duration">07/2019 – 03/2021 | Lucknow</p>
                 <ul>
-                    [cite_start]<li>Developed and maintained core backend functionality using Node.js[cite: 25]. [cite_start]Designed and implemented RESTful APIs for new features[cite: 26].</li>
-                    [cite_start]<li>Optimized existing backend modules and database interactions for better system performance[cite: 27].</li>
-                    [cite_start]<li>Managed and optimized databases, including writing efficient SQL queries and managing migrations for PostgreSQL/MySQL[cite: 28].</li>
-                    [cite_start]<li>Actively contributed new features within an Agile/Scrum environment[cite: 29].</li>
+                    <li>Developed and maintained core backend services using **Node.js** and focused on optimizing **SQL queries** for MySQL/PostgreSQL.</li>
+                    <li>Actively contributed to **Agile/Scrum** methodology, consistently delivering features within sprint timelines.</li>
                 </ul>
             </div>
         </div>
@@ -512,99 +495,15 @@
             <p>I'm available for challenging Senior Backend and Tech Lead roles focused on large-scale system architecture.</p>
             <div class="contact-footer">
                 <a href="mailto:1ashishji1@gmail.com" class="btn primary">Email Me Today</a>
-                <a href="https://1ashishji.github.io/ashishcv.pdf" target="_blank" class="btn secondary">Download Full Resume</a> 
+                <a href="ashishcv.pdf" target="_blank" class="btn secondary">Download Full Resume</a> 
             </div>
             <p class="copyright">&copy; <span id="year"></span> Ashish Mishra. Masterfully Built.</p>
         </div>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
     <script>
-        // --- THREE.JS PARTICLE BACKGROUND EFFECT (Code Constellation) ---
-        const canvas = document.getElementById('three-canvas');
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true });
-
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setPixelRatio(window.devicePixelRatio);
-
-        // Particle Configuration
-        const particleGeometry = new THREE.BufferGeometry();
-        const particleCount = 5000; // Total number of particles
-        const posArray = new Float32Array(particleCount * 3);
-        const particleSize = 0.5;
-
-        for (let i = 0; i < particleCount * 3; i++) {
-            // Random positions between -200 and 200 (creating a large volume)
-            posArray[i] = (Math.random() - 0.5) * 400;
-        }
-
-        particleGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-
-        // Particle Material (using the vibrant primary color: Dark Turquoise)
-        const particleMaterial = new THREE.PointsMaterial({
-            color: 0x00CED1, 
-            size: particleSize,
-            transparent: true,
-            opacity: 0.8,
-            blending: THREE.AdditiveBlending, // Makes particles glow
-            sizeAttenuation: true
-        });
-
-        const particles = new THREE.Points(particleGeometry, particleMaterial);
-        scene.add(particles);
-
-        camera.position.z = 100;
-
-        let mouseX = 0;
-        let mouseY = 0;
-
-        // Mouse movement for subtle parallax effect
-        document.addEventListener('mousemove', (event) => {
-            // Normalize mouse coordinates to -1 to 1 range
-            mouseX = (event.clientX / window.innerWidth) * 2 - 1;
-            mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
-        });
-
-        // Animation Loop
-        function animate() {
-            requestAnimationFrame(animate);
-
-            // Subtle rotation of the particle field
-            particles.rotation.y += 0.0005;
-            particles.rotation.x += 0.0002;
-            
-            // Gentle camera movement based on mouse position (Parallax effect)
-            camera.position.x += (mouseX * 5 - camera.position.x) * 0.05;
-            camera.position.y += (mouseY * 5 - camera.position.y) * 0.05;
-            camera.lookAt(scene.position); // Always look at the center of the particle field
-
-            renderer.render(scene, camera);
-        }
-
-        animate();
-
-        // Handle resizing for responsiveness
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-        });
-        
-        // Dynamic year update
+        // Simple script to update the copyright year dynamically
         document.getElementById('year').textContent = new Date().getFullYear();
-        
-        // Smooth scrolling for navigation
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
     </script>
 </body>
 </html>
